@@ -34,7 +34,7 @@ There are four targets and the datset are in ./Data folder. tgtList can be one o
 - potassiu.tsv
 - nAChRs.tsv
 - sodium.tsv
-- all
+- all <br>
 If all is chosen, the four targets were used simultaneously for model traning by multi-task learning.
 
 ### valFold
