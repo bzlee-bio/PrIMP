@@ -28,8 +28,8 @@ Probability with >=0.5 predicts as modulator peptides for respective ion channel
 ## Running PrIMP
 `python PrIMP.py --fasta <input_fasta_file.fasta> --output <output_file_name.csv>`
 
-The online version of PrIMP is available at http://cblab.dongguk.edu/PrIMPServlet
-
+Example fasta file is provided. To check whether the PrIMP is run, please run the command
+`python PrIMP.py --fasta example.fasta --output results.csv`
 <br>
 
 ## Reproducibility of tranining PrIMP
