@@ -50,4 +50,7 @@ python primp_training.py --tgtList <tgtList> --valFold <valFold> --modelID <mode
 > To apply transfer learning, True, if not, False.
 > Pre-trained weights were prepared by training the model with antimicrobial peptide dataset.
 
+## Dataset used for training PrIMP
+There are dataset for training and evaluate model performance for PrIMP in /Data folder.
+
 ## Citation
