@@ -2,8 +2,10 @@
 
 PrIMP predicts the modulability of calcium, sodium, potassium ion channels as well as nicotine acetylcholine receptors (nAChRs) by accurate prediction models from peptide sequences only.
 
+
 ## Dependencies
 To install python dependencies, run: `pip install -r requirements.txt`
+
 
 ## Input file 
 Input file type is fasta format in which amino acids are represented using single-letter codes.
@@ -12,10 +14,12 @@ Limitation of each sequence length is <=300.
 
 Detailed information of fasta links: https://en.wikipedia.org/wiki/FASTA_format
 
+
 ## Output file
 Output file contains information about probabilities of four respective ion-channel modulability.
 
 Probability with >=0.5 predicts as modulator peptides for respective ion channels.
+
 
 ## Running PrIMP
 `python PrIMP.py --fasta <input_fasta_file.fasta> --output <output_file_name.csv>`
@@ -27,6 +31,7 @@ The online version of PrIMP is available at http://cblab.dongguk.edu/PrIMPServle
 `
 python primp_training.py --tgtList <tgtList> --valFold <valFold> --modelID <modelID> --TL <TL>
 `
+
 > ### tgtList
 > 
 > There are four targets and the datset are in ./Data folder. tgtList can be one of five options
@@ -50,7 +55,9 @@ python primp_training.py --tgtList <tgtList> --valFold <valFold> --modelID <mode
 > To apply transfer learning, True, if not, False.
 > Pre-trained weights were prepared by training the model with antimicrobial peptide dataset.
 
+
 ## Dataset used for training PrIMP
 There are dataset for training and evaluate model performance for PrIMP in /Data folder.
+
 
 ## Citation
