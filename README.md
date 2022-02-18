@@ -27,27 +27,27 @@ The online version of PrIMP is available at http://cblab.dongguk.edu/PrIMPServle
 `
 python primp_training.py --tgtList <tgtList> --valFold <valFold> --modelID <modelID> --TL <TL>
 `
-### tgtList
+> ### tgtList
+> 
+> There are four targets and the datset are in ./Data folder. tgtList can be one of five options
+> - calcium.tsv
+> - potassiu.tsv
+> - nAChRs.tsv
+> - sodium.tsv
+> - all <br>
+> If all is chosen, the four targets were used simultaneously for model traning by multi-task learning.
 
-There are four targets and the datset are in ./Data folder. tgtList can be one of five options
-- calcium.tsv
-- potassiu.tsv
-- nAChRs.tsv
-- sodium.tsv
-- all <br>
-If all is chosen, the four targets were used simultaneously for model traning by multi-task learning.
+> ### valFold
+> The datasets were prepared for 5-fold cross-validation, thus the training datasets were prepared by splitting into 5-folds.
+> valFold assigned the number of fold for the validation dataset during model training. 
+> Enter a value from 0 to 4.
 
-### valFold
-The datasets were prepared for 5-fold cross-validation, thus the training datasets were prepared by splitting into 5-folds.
-valFold assigned the number of fold for the validation dataset during model training. 
-Enter a value from 0 to 4.
+> ### modelID
+> There are 12 model architecture parameters in the code, the desired model architectures are automatically generated.
+> Enter a value from 0 to 11.
 
-### modelID
-There are 12 model architecture parameters in the code, the desired model architectures are automatically generated.
-Enter a value from 0 to 11.
-
-### TL
-To apply transfer learning, True, if not, False.
-Pre-trained weights were prepared by training the model with antimicrobial peptide dataset.
+> ### TL
+> To apply transfer learning, True, if not, False.
+> Pre-trained weights were prepared by training the model with antimicrobial peptide dataset.
 
 ## Citation
