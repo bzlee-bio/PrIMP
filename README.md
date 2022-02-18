@@ -67,6 +67,7 @@ python primp_training.py --tgtList <tgtList> --valFold <valFold> --modelID <mode
 There are dataset for training and evaluate model performance for PrIMP in /Data folder.
 
 <br>
+
 ## Pretrained weights with AMP dataset
 The pretrained weights for transfer learning are provided in /modelWeights/DBAASP
 
