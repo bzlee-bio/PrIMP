@@ -51,44 +51,6 @@ class w2v:
 
         return np.array(vec_data,dtype=np.int), np.array(lab)
     
-# class trainDataHandler(w2v):
-#     def __init__(self, dataPath, tgtList, valFold, nAug = None, batchSize=64):
-#         super().__init__()
-#         _dataTot = dict()
-#         self.trData = dict()
-#         self.valData = dict()
-#         self.testData = dict()
-#         for tgt in tgtList:
-#             tgtName = tgt.replace('.tsv','')
-#             _path = f'{dataPath}/{tgt}'
-#             _dataTot[tgt]=pd.read_csv(_path)
-            
-#             _data = _dataTot[tgt]
-#             _data['Label']=1
-#             _data.loc[_data.Type=='Negative','Label']=0
-            
-#             trList = (_data['DataType']=='Train') & (_data['nFold']!=valFold) & (pd.isna(_data['nAUG']) | (_data.nAUG<nAug))
-#             valList = (_data['DataType']=='Train') & (_data['nFold']==valFold) & (pd.isna(_data['nAUG']) | (_data.nAUG<nAug))
-#             testList = (_data['DataType']=='Test') & pd.isna(_data['nAUG'])
-
-
-
-#             self.trData[tgtName] = self.dataToDataset(self.w2vec(_data.loc[trList].Sequence.values, _data.loc[trList].Label.values), batchSize)
-#             self.valData[tgtName] = self.w2vec(_data.loc[valList].Sequence.values, _data.loc[valList].Label.values)
-#             self.testData[tgtName] = self.w2vec(_data.loc[testList].Sequence.values, _data.loc[testList].Label.values)
-#             trLen = len(self.trData[tgtName])
-#             valLen = len(self.valData[tgtName])
-#             testLen = len(self.testData[tgtName])
-#             print('---------------------------',trLen, valLen, testLen)
-#     def dataToDataset(self, _data, bSize):
-#         _x = _data[0]
-#         _y = _data[1]
-
-#         return tf.data.Dataset.zip((tf.data.Dataset.from_tensor_slices(_x),tf.data.Dataset.from_tensor_slices(_y))).shuffle(10000).batch(bSize)
-
-#     def tgtList(self):
-#         return list(self.trData.keys())
-    
 
     
 class trainDataHandler(w2v):
