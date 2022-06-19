@@ -51,11 +51,6 @@ class w2v:
 
         return np.array(vec_data,dtype=np.int), np.array(lab)
     
-<<<<<<< HEAD
-=======
-
-    
->>>>>>> c55295d9ac3879fe9cd9e02664193ccbde399c82
 class trainDataHandler(w2v):
     def __init__(self, dataPath, tgtList, valFold, batchSize=64):
         super().__init__()
@@ -271,7 +266,7 @@ parser = argparse.ArgumentParser(description = 'prIMP')
 parser.add_argument('--tgtList', metavar='tgtList', type=str, help='Target Lists')
 parser.add_argument('--valFold', metavar='valFold', type=int, help='5-fold cross-validation, Validation dataset fold num, 0~5')
 parser.add_argument('--modelID', metavar='modelID', type=int, help='0~15')
-parser.add_argument('--tL', metavar = 'tL', type=str, help='Transfer learning, True/False')
+parser.add_argument('--TL', metavar = 'tL', type=str, help='Transfer learning, True/False')
 parser.add_argument('--c', metavar = 'c', type=str, help='Seq identity cut-off')
 
 args = parser.parse_args()
@@ -279,7 +274,7 @@ predTgt = args.tgtList
 nValFold = int(args.valFold)
 seqI = args.c
 
-if args.tL =='True':
+if args.TL =='True':
     transferLearning = True
 else:
     transferLearning = False
@@ -698,8 +693,5 @@ for epoch in range(trainedLen, maxEpoch):
     mt.totModelSaver(weightsPath, epoch)
     if predTgt=='DBAASP':
         mt.sLayerSaver(weightsPath, epoch)    
-<<<<<<< HEAD
         
 print('Done!')
-=======
->>>>>>> c55295d9ac3879fe9cd9e02664193ccbde399c82
