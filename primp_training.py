@@ -51,6 +51,11 @@ class w2v:
 
         return np.array(vec_data,dtype=np.int), np.array(lab)
     
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> c55295d9ac3879fe9cd9e02664193ccbde399c82
 class trainDataHandler(w2v):
     def __init__(self, dataPath, tgtList, valFold, batchSize=64):
         super().__init__()
@@ -693,5 +698,8 @@ for epoch in range(trainedLen, maxEpoch):
     mt.totModelSaver(weightsPath, epoch)
     if predTgt=='DBAASP':
         mt.sLayerSaver(weightsPath, epoch)    
+<<<<<<< HEAD
         
 print('Done!')
+=======
+>>>>>>> c55295d9ac3879fe9cd9e02664193ccbde399c82
