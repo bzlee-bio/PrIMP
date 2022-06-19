@@ -116,4 +116,3 @@ df_res = pd.concat([df_res,df_predres],axis=1)
 df_res.to_csv(args.output, sep=',')
 logger.info('PrIMP prediction done...')
 logger.info(f'Prediction results were saved into "{args.output}"')
-
