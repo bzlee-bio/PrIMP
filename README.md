@@ -36,7 +36,7 @@ Example fasta file is provided. To check whether the PrIMP is run, please run th
 ## Reproducibility of tranining PrIMP
 `
 python primp_training.py --tgtList <tgtList> --valFold <valFold> --modelID <modelID> --TL <TL> --c <Dataset sequence identity>
-## Example
+\# Example
 python primp_training.py --tgtList all --valFold 1 --modelID 3 --TL True --c 0.8
 `
 
