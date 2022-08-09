@@ -1,10 +1,14 @@
 import tensorflow as tf
 from tensorflow import keras
 from Bio import SeqIO
+from keras import backend as K
+# from sklearn import svm, tree
 import numpy as np
 import pandas as pd
 import argparse
 import logging
+import pickle
+
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -99,14 +103,34 @@ tgts = ['calcium' , 'nAChRs', 'potassium','sodium']
 models = dict()
 for tgt in tgts:
     models[tgt] = keras.models.load_model(f'./saved_model/{tgt}')
+functors_sodium = K.function(models['sodium'].input, models['sodium'].layers[-2].output)
+functors_potassium = K.function(models['potassium'].input, models['potassium'].layers[-2].output)
+functors_calcium = K.function(models['calcium'].input, models['calcium'].layers[-2].output)
+    
+### Load ML models
+with open('./saved_model/sodium/SVM.pickle', 'rb') as f:
+    clf_sodium = pickle.load(f)
+with open('./saved_model/potassium/DT.pickle', 'rb') as f:
+    clf_potassium = pickle.load(f)
+with open('./saved_model/calcium/SVM.pickle', 'rb') as f:
+    clf_calcium = pickle.load(f)    
+    
+    
+    
     
 logger.info('PrIMP prediction start...')
 pred_res = dict()
-for tgt in tgts:
-    pred_res[tgt] = tf.nn.sigmoid(models[tgt].predict(loaded_seq)).numpy().squeeze()
-    
+
+
+pred_res['calcium'] = clf_calcium.predict_proba(functors_calcium(loaded_seq))[:,1]
+pred_res['nAChRs'] = tf.nn.sigmoid(models[tgt].predict(loaded_seq)).numpy().squeeze()
+pred_res['potassium'] = clf_potassium.predict_proba(functors_potassium(loaded_seq))[:,1]
+pred_res['sodium'] = clf_sodium.predict_proba(functors_sodium(loaded_seq))[:,1]
+
+
 df_inpseq = pd.DataFrame(seq_data,columns=['ID','Sequence'])
 df_predres = pd.DataFrame(pred_res)
+
 df_predres.columns = columns = ['Pred_tgt_calcium_probability' , 'Pred_tgt_nAChRs_probability', 'Pred_tgt_potassium_probability','Pred_tgt_sodium_probability']
 df_mod = pd.DataFrame(np.where(df_predres>=0.5,'Modulate', '-'),columns=['Pred_tgt_calcium' , 'Pred_tgt_nAChRs', 'Pred_tgt_potassium','Pred_tgt_sodium'])
 
@@ -115,4 +139,4 @@ df_res = pd.concat([df_res,df_predres],axis=1)
 
 df_res.to_csv(args.output, sep=',')
 logger.info('PrIMP prediction done...')
-logger.info(f'Prediction results were saved into "{args.output}"')
+logger.info(f'Prediction results were saved in "{args.output}"')
