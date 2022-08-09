@@ -1,5 +1,0 @@
-numpy>=1.19
-pandas>=1.1.2
-tensorflow>=2.0.0
-biopython>=1.19.2
-scikit-learn

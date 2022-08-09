@@ -1,3 +1,7 @@
 *.csv
+
 *.ipynb
-./output_node
+
+output_node/
+
+.ipynb_checkpoints
