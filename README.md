@@ -85,4 +85,4 @@ The pretrained weights for transfer learning are provided in /modelWeights/DBAAS
 <br>
 
 ## Citation
-
+B. Lee et al., "Prediction Models for Identifying Ion Channel-Modulating Peptides via Knowledge Transfer Approaches," in IEEE Journal of Biomedical and Health Informatics, vol. 26, no. 12, pp. 6150-6160, Dec. 2022, doi: 10.1109/JBHI.2022.3204776.
